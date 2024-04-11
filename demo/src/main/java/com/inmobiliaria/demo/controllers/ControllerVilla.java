@@ -4,10 +4,14 @@
  */
 package com.inmobiliaria.demo.controllers;
 
-import com.inmobiliaria.demo.dto.DtoPropietario;
-import com.inmobiliaria.demo.entity.Propietario;
-import com.inmobiliaria.demo.mapper.MapperPropietario;
-import com.inmobiliaria.demo.service.ServicePropietario;
+import com.inmobiliaria.demo.dto.DtoLocal;
+import com.inmobiliaria.demo.dto.DtoVilla;
+import com.inmobiliaria.demo.entity.Local;
+import com.inmobiliaria.demo.entity.Villa;
+import com.inmobiliaria.demo.mapper.MapperLocal;
+import com.inmobiliaria.demo.mapper.MapperVilla;
+import com.inmobiliaria.demo.service.ServiceLocal;
+import com.inmobiliaria.demo.service.ServiceVilla;
 import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,26 +25,23 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author camper
  */
-
 @RestController
-@RequestMapping("/propietario")
-public class ControllerPropietario {
+@RequestMapping("/villa")
+public class ControllerVilla {
+    @Autowired
+    private ServiceVilla sv;
     
     @Autowired
-    private ServicePropietario sp;
+    private MapperVilla mv;
     
-    @Autowired
-    private MapperPropietario mp;
-    
-    @PostMapping("/agregar_propietario")
-    public ResponseEntity<DtoPropietario> guardarUsuario
-        (@RequestBody DtoPropietario dp) throws ParseException{
-        Propietario p=sp.createUser(dp);
+    @PostMapping("/agregar_villa")
+    public ResponseEntity<DtoVilla> guardarLocal
+        (@RequestBody DtoVilla dv) throws ParseException{
+        Villa v=sv.createVilla(dv);
         
-        if(p==null){
+        if(v==null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(dp,HttpStatus.CREATED);
+        return new ResponseEntity<>(dv,HttpStatus.CREATED);
     }
-    
 }

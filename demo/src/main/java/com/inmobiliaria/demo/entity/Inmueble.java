@@ -46,6 +46,18 @@ public class Inmueble {
     @OneToOne(cascade=CascadeType.ALL)
     private Oficina oficina;
     
+    @OneToOne(cascade=CascadeType.ALL)
+    private Local local;
+    
+    @OneToOne(cascade=CascadeType.ALL)
+    private Villa villa;
+    
+    @OneToOne(cascade=CascadeType.ALL)
+    private Pisos pisos;
+    
+    @OneToOne(cascade=CascadeType.ALL)
+    private Casas casas;
+    
     @OneToOne(mappedBy = "inmueble")
     private Visita visita;
 }
