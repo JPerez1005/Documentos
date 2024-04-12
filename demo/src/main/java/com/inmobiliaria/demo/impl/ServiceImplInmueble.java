@@ -40,7 +40,10 @@ import com.inmobiliaria.demo.service.ServicePisos;
 import com.inmobiliaria.demo.service.ServicePropietario;
 import com.inmobiliaria.demo.service.ServiceVilla;
 import jakarta.persistence.EntityNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -208,6 +211,40 @@ public class ServiceImplInmueble implements ServiceInmobiliaria{
     public Optional<DtoLocal> convertidorLocal(Long id){
         Optional<Local> ol=rl.findById(id);
         return ol.map(ml::toDto);
+    }
+
+    @Override
+    public List<DtoInmueble> getAllInmuebles() {
+        List<Inmueble> inmuebles=ri.findAll();
+        return inmuebles.stream()
+                .map(mi::toDto)
+                .collect(Collectors.toList());
+    }
+    
+    @Override
+    public List<DtoInmueble> getAllInmueblesByVenta() {
+        List<Inmueble> inmuebles=ri.findAll();
+        
+        List<DtoInmueble> dis = new ArrayList<>();
+        for (Inmueble inmueble : inmuebles) {
+            if (inmueble.getEstado().equals("venta")) {
+              dis.add(mi.toDto(inmueble));
+            }
+          }
+        return dis;
+    }
+    
+    @Override
+    public List<DtoInmueble> getAllInmueblesByAlquiler() {
+        List<Inmueble> inmuebles=ri.findAll();
+        
+        List<DtoInmueble> dis = new ArrayList<>();
+        for (Inmueble inmueble : inmuebles) {
+            if (inmueble.getEstado().equals("alquiler")) {
+              dis.add(mi.toDto(inmueble));
+            }
+          }
+        return dis;
     }
     
 }

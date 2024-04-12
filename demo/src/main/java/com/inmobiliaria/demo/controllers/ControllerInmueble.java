@@ -8,9 +8,11 @@ import com.inmobiliaria.demo.dto.DtoCliente;
 import com.inmobiliaria.demo.dto.DtoInmueble;
 import com.inmobiliaria.demo.service.ServiceInmobiliaria;
 import java.text.ParseException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +48,24 @@ public class ControllerInmueble {
         localId,
         di);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdInmueble);
+    }
+    
+    @GetMapping("listar_inmuebles")
+    public ResponseEntity<List<DtoInmueble>> listarInmuebles(){
+        List<DtoInmueble> inmuebles=si.getAllInmuebles();
+        return new ResponseEntity<>(inmuebles,HttpStatus.OK);
+    }
+    
+    @GetMapping("listar_inmuebles_alquiler")
+    public ResponseEntity<List<DtoInmueble>> listarInmueblesByAlquiler(){
+        List<DtoInmueble> inmuebles=si.getAllInmueblesByAlquiler();
+        return new ResponseEntity<>(inmuebles,HttpStatus.OK);
+    }
+    
+    @GetMapping("listar_inmuebles_venta")
+    public ResponseEntity<List<DtoInmueble>> listarInmueblesByVenta(){
+        List<DtoInmueble> inmuebles=si.getAllInmueblesByVenta();
+        return new ResponseEntity<>(inmuebles,HttpStatus.OK);
     }
     
 }

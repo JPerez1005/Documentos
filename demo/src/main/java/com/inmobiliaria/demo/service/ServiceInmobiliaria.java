@@ -5,6 +5,7 @@
 package com.inmobiliaria.demo.service;
 
 import com.inmobiliaria.demo.dto.DtoInmueble;
+import java.util.List;
 
 /**
  *entidad,repositorio,dto,service,serviceImpl,controller
@@ -19,4 +20,10 @@ public interface ServiceInmobiliaria {
         Long casasId,
         Long localId,
         DtoInmueble di);
+        
+        List<DtoInmueble> getAllInmuebles();
+        
+        public List<DtoInmueble> getAllInmueblesByVenta();
+        
+        public List<DtoInmueble> getAllInmueblesByAlquiler();
 }
