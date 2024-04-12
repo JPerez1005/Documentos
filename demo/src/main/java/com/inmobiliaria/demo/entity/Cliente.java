@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,6 @@ public class Cliente {
     
     private String telefono;
     
-    @OneToOne(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente")
     private Visita visita;
 }

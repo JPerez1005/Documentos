@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.Date;
@@ -26,9 +27,9 @@ public class Visita {
     
     private String comentarios;
     
-    @OneToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL)
     private Cliente cliente;
     
-    @OneToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL)
     private Inmueble inmueble;
 }
