@@ -26,6 +26,8 @@ public class Inmueble {
     
     private String precio;
     
+    private String ciudad;
+    
     @OneToOne(cascade=CascadeType.ALL)
     private Oficina oficina;
     
