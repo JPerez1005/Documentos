@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="local")
+@Table(name="inmueble")
 public class Inmueble {
     
     @Id
@@ -42,6 +42,9 @@ public class Inmueble {
     
     @OneToOne(cascade=CascadeType.ALL)
     private Casas casas;
+    
+    @OneToOne(cascade=CascadeType.ALL)
+    private Local local;
     
     @OneToOne(mappedBy = "inmueble")
     private Visita visita;
