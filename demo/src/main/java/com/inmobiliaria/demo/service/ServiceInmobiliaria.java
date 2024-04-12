@@ -4,10 +4,19 @@
  */
 package com.inmobiliaria.demo.service;
 
+import com.inmobiliaria.demo.dto.DtoInmueble;
+
 /**
  *entidad,repositorio,dto,service,serviceImpl,controller
  * @author camper
  */
 public interface ServiceInmobiliaria {
-    
+    DtoInmueble createInmueble
+        (Long oficinaId,
+        Long propietarioId,
+        Long villaId,
+        Long pisosId,
+        Long casasId,
+        Long localId,
+        DtoInmueble di);
 }
