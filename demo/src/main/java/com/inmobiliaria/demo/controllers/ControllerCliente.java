@@ -14,7 +14,9 @@ import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,6 +46,19 @@ public class ControllerCliente {
         
         //DtoOficina dp2=mo.toDto(o);//Aquí lo convertimos a Dto
         return new ResponseEntity<>(dc,HttpStatus.CREATED);
+    }
+        
+    @PutMapping("editar_cliente/{id}")
+    public ResponseEntity<DtoCliente> actualizarCliente
+        (@PathVariable Long id,@RequestBody DtoCliente dc){
+        
+            DtoCliente updateCliente=sc.updateCliente(id, dc);
+            
+            if (updateCliente!=null) {
+                return new ResponseEntity<>(updateCliente,HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
     }
     
 }

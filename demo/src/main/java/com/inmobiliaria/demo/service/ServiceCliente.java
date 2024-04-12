@@ -12,4 +12,6 @@ import java.text.ParseException;
  */
 public interface ServiceCliente {
     Cliente createCliente(DtoCliente dc);
+    
+    public DtoCliente updateCliente(Long id, DtoCliente dc);
 }
