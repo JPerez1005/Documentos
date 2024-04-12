@@ -18,5 +18,20 @@ public class DtoInmueble {
     
     private String precio;
     
+    private String ciudad;
+    
     private String numero_referencia;
+    
+    private DtoOficina oficina;
+    
+    private DtoPropietario propietario;
+    
+    private DtoVilla villa;
+    
+    private DtoPisos pisos;
+    
+    private DtoCasas casas;
+    
+    private DtoLocal local;
+    
 }

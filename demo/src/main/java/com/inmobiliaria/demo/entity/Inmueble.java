@@ -28,6 +28,8 @@ public class Inmueble {
     
     private String ciudad;
     
+    private String numero_referencia;
+    
     @OneToOne(cascade=CascadeType.ALL)
     private Oficina oficina;
     
